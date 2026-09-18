@@ -32,6 +32,7 @@
         "tags": [
           "ApiInfo"
         ],
+        "operationId": "getApi",
         "responses": {
           "200": {
             "description": "OK"
@@ -44,6 +45,7 @@
         "tags": [
           "Authentication"
         ],
+        "operationId": "postLogin",
         "parameters": [
           {
             "name": "returnUrl",
@@ -88,17 +90,8 @@
           "200": {
             "description": "OK"
           }
-        }
-      },
-      "get": {
-        "tags": [
-          "StaticResource"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        },
+        "security": [ ]
       }
     },
     "/logout": {
@@ -106,11 +99,13 @@
         "tags": [
           "Authentication"
         ],
+        "operationId": "getLogout",
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": [ ]
       }
     },
     "/api/v3/autotagging": {
@@ -118,6 +113,7 @@
         "tags": [
           "AutoTagging"
         ],
+        "operationId": "postAutotagging",
         "requestBody": {
           "content": {
             "application/json": {
@@ -128,8 +124,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -154,6 +150,7 @@
         "tags": [
           "AutoTagging"
         ],
+        "operationId": "getAutotagging",
         "responses": {
           "200": {
             "description": "OK",
@@ -176,6 +173,7 @@
         "tags": [
           "AutoTagging"
         ],
+        "operationId": "putAutotaggingById",
         "parameters": [
           {
             "name": "id",
@@ -196,8 +194,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -222,6 +220,7 @@
         "tags": [
           "AutoTagging"
         ],
+        "operationId": "deleteAutotaggingById",
         "parameters": [
           {
             "name": "id",
@@ -243,6 +242,7 @@
         "tags": [
           "AutoTagging"
         ],
+        "operationId": "getAutotaggingById",
         "parameters": [
           {
             "name": "id",
@@ -273,6 +273,7 @@
         "tags": [
           "AutoTagging"
         ],
+        "operationId": "getAutotaggingSchema",
         "responses": {
           "200": {
             "description": "OK"
@@ -285,6 +286,7 @@
         "tags": [
           "Backup"
         ],
+        "operationId": "getSystemBackup",
         "responses": {
           "200": {
             "description": "OK",
@@ -323,6 +325,7 @@
         "tags": [
           "Backup"
         ],
+        "operationId": "deleteSystemBackupById",
         "parameters": [
           {
             "name": "id",
@@ -346,6 +349,7 @@
         "tags": [
           "Backup"
         ],
+        "operationId": "postSystemBackupRestoreById",
         "parameters": [
           {
             "name": "id",
@@ -369,6 +373,7 @@
         "tags": [
           "Backup"
         ],
+        "operationId": "postSystemBackupRestoreUpload",
         "responses": {
           "200": {
             "description": "OK"
@@ -381,6 +386,7 @@
         "tags": [
           "Blocklist"
         ],
+        "operationId": "getBlocklist",
         "parameters": [
           {
             "name": "page",
@@ -455,6 +461,7 @@
         "tags": [
           "Blocklist"
         ],
+        "operationId": "deleteBlocklistById",
         "parameters": [
           {
             "name": "id",
@@ -478,6 +485,7 @@
         "tags": [
           "Blocklist"
         ],
+        "operationId": "deleteBlocklistBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -509,6 +517,7 @@
         "tags": [
           "Calendar"
         ],
+        "operationId": "getCalendar",
         "parameters": [
           {
             "name": "start",
@@ -589,6 +598,7 @@
         "tags": [
           "Calendar"
         ],
+        "operationId": "getCalendarById",
         "parameters": [
           {
             "name": "id",
@@ -619,6 +629,7 @@
         "tags": [
           "CalendarFeed"
         ],
+        "operationId": "getFeedV3CalendarWhisparrIcs",
         "parameters": [
           {
             "name": "pastDays",
@@ -683,6 +694,7 @@
         "tags": [
           "Command"
         ],
+        "operationId": "postCommand",
         "requestBody": {
           "content": {
             "application/json": {
@@ -693,8 +705,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -709,6 +721,7 @@
         "tags": [
           "Command"
         ],
+        "operationId": "getCommand",
         "responses": {
           "200": {
             "description": "OK",
@@ -731,6 +744,7 @@
         "tags": [
           "Command"
         ],
+        "operationId": "deleteCommandById",
         "parameters": [
           {
             "name": "id",
@@ -752,6 +766,7 @@
         "tags": [
           "Command"
         ],
+        "operationId": "getCommandById",
         "parameters": [
           {
             "name": "id",
@@ -782,6 +797,7 @@
         "tags": [
           "CustomFilter"
         ],
+        "operationId": "getCustomfilter",
         "responses": {
           "200": {
             "description": "OK",
@@ -802,6 +818,7 @@
         "tags": [
           "CustomFilter"
         ],
+        "operationId": "postCustomfilter",
         "requestBody": {
           "content": {
             "application/json": {
@@ -812,8 +829,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -840,6 +857,7 @@
         "tags": [
           "CustomFilter"
         ],
+        "operationId": "putCustomfilterById",
         "parameters": [
           {
             "name": "id",
@@ -860,8 +878,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -886,6 +904,7 @@
         "tags": [
           "CustomFilter"
         ],
+        "operationId": "deleteCustomfilterById",
         "parameters": [
           {
             "name": "id",
@@ -907,6 +926,7 @@
         "tags": [
           "CustomFilter"
         ],
+        "operationId": "getCustomfilterById",
         "parameters": [
           {
             "name": "id",
@@ -937,6 +957,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "getCustomformat",
         "responses": {
           "200": {
             "description": "OK",
@@ -957,6 +978,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "postCustomformat",
         "requestBody": {
           "content": {
             "application/json": {
@@ -967,8 +989,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -995,6 +1017,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "putCustomformatById",
         "parameters": [
           {
             "name": "id",
@@ -1015,8 +1038,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1041,6 +1064,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "deleteCustomformatById",
         "parameters": [
           {
             "name": "id",
@@ -1062,6 +1086,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "getCustomformatById",
         "parameters": [
           {
             "name": "id",
@@ -1092,6 +1117,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "putCustomformatBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1102,12 +1128,15 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomFormatResource"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomFormatResource"
+                  }
                 }
               }
             }
@@ -1118,6 +1147,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "deleteCustomformatBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1139,6 +1169,7 @@
         "tags": [
           "CustomFormat"
         ],
+        "operationId": "getCustomformatSchema",
         "responses": {
           "200": {
             "description": "OK"
@@ -1151,6 +1182,7 @@
         "tags": [
           "Cutoff"
         ],
+        "operationId": "getWantedCutoff",
         "parameters": [
           {
             "name": "page",
@@ -1236,6 +1268,7 @@
         "tags": [
           "Cutoff"
         ],
+        "operationId": "getWantedCutoffById",
         "parameters": [
           {
             "name": "id",
@@ -1266,6 +1299,7 @@
         "tags": [
           "DelayProfile"
         ],
+        "operationId": "postDelayprofile",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1276,8 +1310,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1302,6 +1336,7 @@
         "tags": [
           "DelayProfile"
         ],
+        "operationId": "getDelayprofile",
         "responses": {
           "200": {
             "description": "OK",
@@ -1324,6 +1359,7 @@
         "tags": [
           "DelayProfile"
         ],
+        "operationId": "deleteDelayprofileById",
         "parameters": [
           {
             "name": "id",
@@ -1345,6 +1381,7 @@
         "tags": [
           "DelayProfile"
         ],
+        "operationId": "putDelayprofileById",
         "parameters": [
           {
             "name": "id",
@@ -1365,8 +1402,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1391,6 +1428,7 @@
         "tags": [
           "DelayProfile"
         ],
+        "operationId": "getDelayprofileById",
         "parameters": [
           {
             "name": "id",
@@ -1421,6 +1459,7 @@
         "tags": [
           "DelayProfile"
         ],
+        "operationId": "putDelayprofileReorderById",
         "parameters": [
           {
             "name": "id",
@@ -1478,6 +1517,7 @@
         "tags": [
           "DiskSpace"
         ],
+        "operationId": "getDiskspace",
         "responses": {
           "200": {
             "description": "OK",
@@ -1500,6 +1540,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "getDownloadclient",
         "responses": {
           "200": {
             "description": "OK",
@@ -1520,6 +1561,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "postDownloadclient",
         "parameters": [
           {
             "name": "forceSave",
@@ -1540,8 +1582,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -1558,6 +1600,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "putDownloadclientById",
         "parameters": [
           {
             "name": "id",
@@ -1587,8 +1630,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -1603,6 +1646,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "deleteDownloadclientById",
         "parameters": [
           {
             "name": "id",
@@ -1624,6 +1668,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "getDownloadclientById",
         "parameters": [
           {
             "name": "id",
@@ -1654,6 +1699,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "putDownloadclientBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1664,15 +1710,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DownloadClientResource"
-                }
-              }
-            }
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -1680,6 +1719,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "deleteDownloadclientBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1701,6 +1741,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "getDownloadclientSchema",
         "responses": {
           "200": {
             "description": "OK",
@@ -1723,6 +1764,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "postDownloadclientTest",
         "parameters": [
           {
             "name": "forceTest",
@@ -1754,6 +1796,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "postDownloadclientTestall",
         "responses": {
           "200": {
             "description": "OK"
@@ -1766,6 +1809,7 @@
         "tags": [
           "DownloadClient"
         ],
+        "operationId": "postDownloadclientActionByName",
         "parameters": [
           {
             "name": "name",
@@ -1797,6 +1841,7 @@
         "tags": [
           "DownloadClientConfig"
         ],
+        "operationId": "getConfigDownloadclient",
         "responses": {
           "200": {
             "description": "OK",
@@ -1816,6 +1861,7 @@
         "tags": [
           "DownloadClientConfig"
         ],
+        "operationId": "putConfigDownloadclientById",
         "parameters": [
           {
             "name": "id",
@@ -1836,8 +1882,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1862,6 +1908,7 @@
         "tags": [
           "DownloadClientConfig"
         ],
+        "operationId": "getConfigDownloadclientById",
         "parameters": [
           {
             "name": "id",
@@ -1892,6 +1939,7 @@
         "tags": [
           "Episode"
         ],
+        "operationId": "getEpisode",
         "parameters": [
           {
             "name": "seriesId",
@@ -1975,6 +2023,7 @@
         "tags": [
           "Episode"
         ],
+        "operationId": "putEpisodeById",
         "parameters": [
           {
             "name": "id",
@@ -1996,8 +2045,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2022,6 +2071,7 @@
         "tags": [
           "Episode"
         ],
+        "operationId": "getEpisodeById",
         "parameters": [
           {
             "name": "id",
@@ -2052,6 +2102,7 @@
         "tags": [
           "Episode"
         ],
+        "operationId": "putEpisodeMonitor",
         "parameters": [
           {
             "name": "includeImages",
@@ -2072,8 +2123,34 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeResource"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeResource"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeResource"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -2083,6 +2160,7 @@
         "tags": [
           "EpisodeFile"
         ],
+        "operationId": "getEpisodefile",
         "parameters": [
           {
             "name": "seriesId",
@@ -2126,6 +2204,7 @@
         "tags": [
           "EpisodeFile"
         ],
+        "operationId": "putEpisodefileById",
         "parameters": [
           {
             "name": "id",
@@ -2146,8 +2225,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2172,6 +2251,7 @@
         "tags": [
           "EpisodeFile"
         ],
+        "operationId": "deleteEpisodefileById",
         "parameters": [
           {
             "name": "id",
@@ -2193,6 +2273,7 @@
         "tags": [
           "EpisodeFile"
         ],
+        "operationId": "getEpisodefileById",
         "parameters": [
           {
             "name": "id",
@@ -2223,6 +2304,7 @@
         "tags": [
           "EpisodeFile"
         ],
+        "operationId": "putEpisodefileEditor",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2233,8 +2315,34 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeFileResource"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeFileResource"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeFileResource"
+                  }
+                }
+              }
+            }
           }
         },
         "deprecated": true
@@ -2245,6 +2353,7 @@
         "tags": [
           "EpisodeFile"
         ],
+        "operationId": "deleteEpisodefileBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2264,6 +2373,7 @@
         "tags": [
           "EpisodeFile"
         ],
+        "operationId": "putEpisodefileBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2277,8 +2387,34 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeFileResource"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeFileResource"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EpisodeFileResource"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -2288,6 +2424,7 @@
         "tags": [
           "FileSystem"
         ],
+        "operationId": "getFilesystem",
         "parameters": [
           {
             "name": "path",
@@ -2325,6 +2462,7 @@
         "tags": [
           "FileSystem"
         ],
+        "operationId": "getFilesystemType",
         "parameters": [
           {
             "name": "path",
@@ -2346,6 +2484,7 @@
         "tags": [
           "FileSystem"
         ],
+        "operationId": "getFilesystemMediafiles",
         "parameters": [
           {
             "name": "path",
@@ -2367,6 +2506,7 @@
         "tags": [
           "Health"
         ],
+        "operationId": "getHealth",
         "responses": {
           "200": {
             "description": "OK",
@@ -2389,6 +2529,7 @@
         "tags": [
           "History"
         ],
+        "operationId": "getHistory",
         "parameters": [
           {
             "name": "page",
@@ -2515,6 +2656,7 @@
         "tags": [
           "History"
         ],
+        "operationId": "getHistorySince",
         "parameters": [
           {
             "name": "date",
@@ -2570,6 +2712,7 @@
         "tags": [
           "History"
         ],
+        "operationId": "getHistorySeries",
         "parameters": [
           {
             "name": "seriesId",
@@ -2633,6 +2776,7 @@
         "tags": [
           "History"
         ],
+        "operationId": "postHistoryFailedById",
         "parameters": [
           {
             "name": "id",
@@ -2656,6 +2800,7 @@
         "tags": [
           "HostConfig"
         ],
+        "operationId": "getConfigHost",
         "responses": {
           "200": {
             "description": "OK",
@@ -2685,6 +2830,7 @@
         "tags": [
           "HostConfig"
         ],
+        "operationId": "putConfigHostById",
         "parameters": [
           {
             "name": "id",
@@ -2715,8 +2861,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2741,6 +2887,7 @@
         "tags": [
           "HostConfig"
         ],
+        "operationId": "getConfigHostById",
         "parameters": [
           {
             "name": "id",
@@ -2771,6 +2918,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "getImportlist",
         "responses": {
           "200": {
             "description": "OK",
@@ -2791,6 +2939,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "postImportlist",
         "parameters": [
           {
             "name": "forceSave",
@@ -2811,8 +2960,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -2829,6 +2978,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "putImportlistById",
         "parameters": [
           {
             "name": "id",
@@ -2858,8 +3008,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -2874,6 +3024,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "deleteImportlistById",
         "parameters": [
           {
             "name": "id",
@@ -2895,6 +3046,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "getImportlistById",
         "parameters": [
           {
             "name": "id",
@@ -2925,6 +3077,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "putImportlistBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2935,15 +3088,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImportListResource"
-                }
-              }
-            }
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -2951,6 +3097,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "deleteImportlistBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2972,6 +3119,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "getImportlistSchema",
         "responses": {
           "200": {
             "description": "OK",
@@ -2994,6 +3142,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "postImportlistTest",
         "parameters": [
           {
             "name": "forceTest",
@@ -3025,6 +3174,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "postImportlistTestall",
         "responses": {
           "200": {
             "description": "OK"
@@ -3037,6 +3187,7 @@
         "tags": [
           "ImportList"
         ],
+        "operationId": "postImportlistActionByName",
         "parameters": [
           {
             "name": "name",
@@ -3068,6 +3219,7 @@
         "tags": [
           "ImportListExclusion"
         ],
+        "operationId": "getImportlistexclusion",
         "responses": {
           "200": {
             "description": "OK",
@@ -3089,6 +3241,7 @@
         "tags": [
           "ImportListExclusion"
         ],
+        "operationId": "postImportlistexclusion",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3099,8 +3252,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3127,6 +3280,7 @@
         "tags": [
           "ImportListExclusion"
         ],
+        "operationId": "getImportlistexclusionPaged",
         "parameters": [
           {
             "name": "page",
@@ -3180,6 +3334,7 @@
         "tags": [
           "ImportListExclusion"
         ],
+        "operationId": "putImportlistexclusionById",
         "parameters": [
           {
             "name": "id",
@@ -3200,8 +3355,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3226,6 +3381,7 @@
         "tags": [
           "ImportListExclusion"
         ],
+        "operationId": "deleteImportlistexclusionById",
         "parameters": [
           {
             "name": "id",
@@ -3247,6 +3403,7 @@
         "tags": [
           "ImportListExclusion"
         ],
+        "operationId": "getImportlistexclusionById",
         "parameters": [
           {
             "name": "id",
@@ -3277,6 +3434,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "getIndexer",
         "responses": {
           "200": {
             "description": "OK",
@@ -3297,6 +3455,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "postIndexer",
         "parameters": [
           {
             "name": "forceSave",
@@ -3317,8 +3476,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -3335,6 +3494,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "putIndexerById",
         "parameters": [
           {
             "name": "id",
@@ -3364,8 +3524,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -3380,6 +3540,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "deleteIndexerById",
         "parameters": [
           {
             "name": "id",
@@ -3401,6 +3562,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "getIndexerById",
         "parameters": [
           {
             "name": "id",
@@ -3431,6 +3593,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "putIndexerBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3441,15 +3604,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/IndexerResource"
-                }
-              }
-            }
+          "202": {
+            "description": "Accepted"
           }
         }
       },
@@ -3457,6 +3613,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "deleteIndexerBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3478,6 +3635,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "getIndexerSchema",
         "responses": {
           "200": {
             "description": "OK",
@@ -3500,6 +3658,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "postIndexerTest",
         "parameters": [
           {
             "name": "forceTest",
@@ -3531,6 +3690,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "postIndexerTestall",
         "responses": {
           "200": {
             "description": "OK"
@@ -3543,6 +3703,7 @@
         "tags": [
           "Indexer"
         ],
+        "operationId": "postIndexerActionByName",
         "parameters": [
           {
             "name": "name",
@@ -3574,6 +3735,7 @@
         "tags": [
           "IndexerConfig"
         ],
+        "operationId": "getConfigIndexer",
         "responses": {
           "200": {
             "description": "OK",
@@ -3593,6 +3755,7 @@
         "tags": [
           "IndexerConfig"
         ],
+        "operationId": "putConfigIndexerById",
         "parameters": [
           {
             "name": "id",
@@ -3613,8 +3776,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3639,6 +3802,7 @@
         "tags": [
           "IndexerConfig"
         ],
+        "operationId": "getConfigIndexerById",
         "parameters": [
           {
             "name": "id",
@@ -3669,6 +3833,7 @@
         "tags": [
           "IndexerFlag"
         ],
+        "operationId": "getIndexerflag",
         "responses": {
           "200": {
             "description": "OK",
@@ -3707,6 +3872,7 @@
         "tags": [
           "Language"
         ],
+        "operationId": "getLanguage",
         "responses": {
           "200": {
             "description": "OK",
@@ -3745,6 +3911,7 @@
         "tags": [
           "Language"
         ],
+        "operationId": "getLanguageById",
         "parameters": [
           {
             "name": "id",
@@ -3775,6 +3942,7 @@
         "tags": [
           "LanguageProfile"
         ],
+        "operationId": "postLanguageprofile",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3785,8 +3953,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -3802,6 +3970,7 @@
         "tags": [
           "LanguageProfile"
         ],
+        "operationId": "getLanguageprofile",
         "responses": {
           "200": {
             "description": "OK",
@@ -3825,6 +3994,7 @@
         "tags": [
           "LanguageProfile"
         ],
+        "operationId": "deleteLanguageprofileById",
         "parameters": [
           {
             "name": "id",
@@ -3847,6 +4017,7 @@
         "tags": [
           "LanguageProfile"
         ],
+        "operationId": "putLanguageprofileById",
         "parameters": [
           {
             "name": "id",
@@ -3867,8 +4038,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -3884,6 +4055,7 @@
         "tags": [
           "LanguageProfile"
         ],
+        "operationId": "getLanguageprofileById",
         "parameters": [
           {
             "name": "id",
@@ -3914,6 +4086,7 @@
         "tags": [
           "LanguageProfileSchema"
         ],
+        "operationId": "getLanguageprofileSchema",
         "responses": {
           "200": {
             "description": "OK",
@@ -3934,6 +4107,7 @@
         "tags": [
           "Localization"
         ],
+        "operationId": "getLocalization",
         "responses": {
           "200": {
             "description": "OK",
@@ -3953,6 +4127,7 @@
         "tags": [
           "Localization"
         ],
+        "operationId": "getLocalizationLanguage",
         "responses": {
           "200": {
             "description": "OK",
@@ -3972,6 +4147,7 @@
         "tags": [
           "Localization"
         ],
+        "operationId": "getLocalizationById",
         "parameters": [
           {
             "name": "id",
@@ -4002,6 +4178,7 @@
         "tags": [
           "Log"
         ],
+        "operationId": "getLog",
         "parameters": [
           {
             "name": "page",
@@ -4062,6 +4239,7 @@
         "tags": [
           "LogFile"
         ],
+        "operationId": "getLogFile",
         "responses": {
           "200": {
             "description": "OK",
@@ -4084,6 +4262,7 @@
         "tags": [
           "LogFile"
         ],
+        "operationId": "getLogFileByFilename",
         "parameters": [
           {
             "name": "filename",
@@ -4107,6 +4286,7 @@
         "tags": [
           "ManualImport"
         ],
+        "operationId": "getManualimport",
         "parameters": [
           {
             "name": "folder",
@@ -4167,6 +4347,7 @@
         "tags": [
           "ManualImport"
         ],
+        "operationId": "postManualimport",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4191,6 +4372,7 @@
         "tags": [
           "MediaCover"
         ],
+        "operationId": "getMediacoverBySeriesIdByFilename",
         "parameters": [
           {
             "name": "seriesId",
@@ -4223,6 +4405,7 @@
         "tags": [
           "MediaManagementConfig"
         ],
+        "operationId": "getConfigMediamanagement",
         "responses": {
           "200": {
             "description": "OK",
@@ -4242,6 +4425,7 @@
         "tags": [
           "MediaManagementConfig"
         ],
+        "operationId": "putConfigMediamanagementById",
         "parameters": [
           {
             "name": "id",
@@ -4262,8 +4446,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4288,6 +4472,7 @@
         "tags": [
           "MediaManagementConfig"
         ],
+        "operationId": "getConfigMediamanagementById",
         "parameters": [
           {
             "name": "id",
@@ -4318,6 +4503,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "getMetadata",
         "responses": {
           "200": {
             "description": "OK",
@@ -4338,6 +4524,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "postMetadata",
         "parameters": [
           {
             "name": "forceSave",
@@ -4358,8 +4545,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -4376,6 +4563,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "putMetadataById",
         "parameters": [
           {
             "name": "id",
@@ -4405,8 +4593,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -4421,6 +4609,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "deleteMetadataById",
         "parameters": [
           {
             "name": "id",
@@ -4442,6 +4631,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "getMetadataById",
         "parameters": [
           {
             "name": "id",
@@ -4472,6 +4662,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "getMetadataSchema",
         "responses": {
           "200": {
             "description": "OK",
@@ -4494,6 +4685,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "postMetadataTest",
         "parameters": [
           {
             "name": "forceTest",
@@ -4525,6 +4717,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "postMetadataTestall",
         "responses": {
           "200": {
             "description": "OK"
@@ -4537,6 +4730,7 @@
         "tags": [
           "Metadata"
         ],
+        "operationId": "postMetadataActionByName",
         "parameters": [
           {
             "name": "name",
@@ -4568,6 +4762,7 @@
         "tags": [
           "Missing"
         ],
+        "operationId": "getWantedMissing",
         "parameters": [
           {
             "name": "page",
@@ -4645,6 +4840,7 @@
         "tags": [
           "Missing"
         ],
+        "operationId": "getWantedMissingById",
         "parameters": [
           {
             "name": "id",
@@ -4675,6 +4871,7 @@
         "tags": [
           "NamingConfig"
         ],
+        "operationId": "getConfigNaming",
         "responses": {
           "200": {
             "description": "OK",
@@ -4704,6 +4901,7 @@
         "tags": [
           "NamingConfig"
         ],
+        "operationId": "putConfigNamingById",
         "parameters": [
           {
             "name": "id",
@@ -4734,8 +4932,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4760,6 +4958,7 @@
         "tags": [
           "NamingConfig"
         ],
+        "operationId": "getConfigNamingById",
         "parameters": [
           {
             "name": "id",
@@ -4790,6 +4989,7 @@
         "tags": [
           "NamingConfig"
         ],
+        "operationId": "getConfigNamingExamples",
         "parameters": [
           {
             "name": "renameEpisodes",
@@ -4919,6 +5119,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "getNotification",
         "responses": {
           "200": {
             "description": "OK",
@@ -4939,6 +5140,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "postNotification",
         "parameters": [
           {
             "name": "forceSave",
@@ -4959,8 +5161,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -4977,6 +5179,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "putNotificationById",
         "parameters": [
           {
             "name": "id",
@@ -5006,8 +5209,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -5022,6 +5225,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "deleteNotificationById",
         "parameters": [
           {
             "name": "id",
@@ -5043,6 +5247,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "getNotificationById",
         "parameters": [
           {
             "name": "id",
@@ -5073,6 +5278,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "getNotificationSchema",
         "responses": {
           "200": {
             "description": "OK",
@@ -5095,6 +5301,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "postNotificationTest",
         "parameters": [
           {
             "name": "forceTest",
@@ -5126,6 +5333,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "postNotificationTestall",
         "responses": {
           "200": {
             "description": "OK"
@@ -5138,6 +5346,7 @@
         "tags": [
           "Notification"
         ],
+        "operationId": "postNotificationActionByName",
         "parameters": [
           {
             "name": "name",
@@ -5169,6 +5378,7 @@
         "tags": [
           "Parse"
         ],
+        "operationId": "getParse",
         "parameters": [
           {
             "name": "title",
@@ -5204,6 +5414,7 @@
         "tags": [
           "Ping"
         ],
+        "operationId": "getPing",
         "responses": {
           "200": {
             "description": "OK",
@@ -5215,12 +5426,14 @@
               }
             }
           }
-        }
+        },
+        "security": [ ]
       },
       "head": {
         "tags": [
           "Ping"
         ],
+        "operationId": "headPing",
         "responses": {
           "200": {
             "description": "OK",
@@ -5232,7 +5445,8 @@
               }
             }
           }
-        }
+        },
+        "security": [ ]
       }
     },
     "/api/v3/qualitydefinition/{id}": {
@@ -5240,6 +5454,7 @@
         "tags": [
           "QualityDefinition"
         ],
+        "operationId": "putQualitydefinitionById",
         "parameters": [
           {
             "name": "id",
@@ -5270,8 +5485,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5296,6 +5511,7 @@
         "tags": [
           "QualityDefinition"
         ],
+        "operationId": "getQualitydefinitionById",
         "parameters": [
           {
             "name": "id",
@@ -5326,6 +5542,7 @@
         "tags": [
           "QualityDefinition"
         ],
+        "operationId": "getQualitydefinition",
         "responses": {
           "200": {
             "description": "OK",
@@ -5364,6 +5581,7 @@
         "tags": [
           "QualityDefinition"
         ],
+        "operationId": "putQualitydefinitionUpdate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5393,8 +5611,34 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QualityDefinitionResource"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QualityDefinitionResource"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QualityDefinitionResource"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -5404,6 +5648,7 @@
         "tags": [
           "QualityDefinition"
         ],
+        "operationId": "getQualitydefinitionLimits",
         "responses": {
           "200": {
             "description": "OK",
@@ -5433,6 +5678,7 @@
         "tags": [
           "QualityProfile"
         ],
+        "operationId": "postQualityprofile",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5443,8 +5689,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5469,6 +5715,7 @@
         "tags": [
           "QualityProfile"
         ],
+        "operationId": "getQualityprofile",
         "responses": {
           "200": {
             "description": "OK",
@@ -5491,6 +5738,7 @@
         "tags": [
           "QualityProfile"
         ],
+        "operationId": "deleteQualityprofileById",
         "parameters": [
           {
             "name": "id",
@@ -5512,6 +5760,7 @@
         "tags": [
           "QualityProfile"
         ],
+        "operationId": "putQualityprofileById",
         "parameters": [
           {
             "name": "id",
@@ -5532,8 +5781,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5558,6 +5807,7 @@
         "tags": [
           "QualityProfile"
         ],
+        "operationId": "getQualityprofileById",
         "parameters": [
           {
             "name": "id",
@@ -5588,6 +5838,7 @@
         "tags": [
           "QualityProfileSchema"
         ],
+        "operationId": "getQualityprofileSchema",
         "responses": {
           "200": {
             "description": "OK",
@@ -5617,6 +5868,7 @@
         "tags": [
           "Queue"
         ],
+        "operationId": "deleteQueueById",
         "parameters": [
           {
             "name": "id",
@@ -5672,6 +5924,7 @@
         "tags": [
           "Queue"
         ],
+        "operationId": "deleteQueueBulk",
         "parameters": [
           {
             "name": "removeFromClient",
@@ -5737,6 +5990,7 @@
         "tags": [
           "Queue"
         ],
+        "operationId": "getQueue",
         "parameters": [
           {
             "name": "page",
@@ -5864,6 +6118,7 @@
         "tags": [
           "QueueAction"
         ],
+        "operationId": "postQueueGrabById",
         "parameters": [
           {
             "name": "id",
@@ -5887,6 +6142,7 @@
         "tags": [
           "QueueAction"
         ],
+        "operationId": "postQueueGrabBulk",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5908,6 +6164,7 @@
         "tags": [
           "QueueDetails"
         ],
+        "operationId": "getQueueDetails",
         "parameters": [
           {
             "name": "seriesId",
@@ -5967,6 +6224,7 @@
         "tags": [
           "QueueStatus"
         ],
+        "operationId": "getQueueStatus",
         "responses": {
           "200": {
             "description": "OK",
@@ -5986,6 +6244,7 @@
         "tags": [
           "Release"
         ],
+        "operationId": "postRelease",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6005,6 +6264,7 @@
         "tags": [
           "Release"
         ],
+        "operationId": "getRelease",
         "parameters": [
           {
             "name": "seriesId",
@@ -6053,6 +6313,7 @@
         "tags": [
           "ReleaseProfile"
         ],
+        "operationId": "postReleaseprofile",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6073,8 +6334,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6099,6 +6360,7 @@
         "tags": [
           "ReleaseProfile"
         ],
+        "operationId": "getReleaseprofile",
         "responses": {
           "200": {
             "description": "OK",
@@ -6137,6 +6399,7 @@
         "tags": [
           "ReleaseProfile"
         ],
+        "operationId": "deleteReleaseprofileById",
         "parameters": [
           {
             "name": "id",
@@ -6158,6 +6421,7 @@
         "tags": [
           "ReleaseProfile"
         ],
+        "operationId": "putReleaseprofileById",
         "parameters": [
           {
             "name": "id",
@@ -6188,8 +6452,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6214,6 +6478,7 @@
         "tags": [
           "ReleaseProfile"
         ],
+        "operationId": "getReleaseprofileById",
         "parameters": [
           {
             "name": "id",
@@ -6244,6 +6509,7 @@
         "tags": [
           "ReleasePush"
         ],
+        "operationId": "postReleasePush",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6291,6 +6557,7 @@
         "tags": [
           "RemotePathMapping"
         ],
+        "operationId": "postRemotepathmapping",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6301,8 +6568,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6327,6 +6594,7 @@
         "tags": [
           "RemotePathMapping"
         ],
+        "operationId": "getRemotepathmapping",
         "responses": {
           "200": {
             "description": "OK",
@@ -6349,6 +6617,7 @@
         "tags": [
           "RemotePathMapping"
         ],
+        "operationId": "deleteRemotepathmappingById",
         "parameters": [
           {
             "name": "id",
@@ -6370,6 +6639,7 @@
         "tags": [
           "RemotePathMapping"
         ],
+        "operationId": "putRemotepathmappingById",
         "parameters": [
           {
             "name": "id",
@@ -6400,8 +6670,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6426,6 +6696,7 @@
         "tags": [
           "RemotePathMapping"
         ],
+        "operationId": "getRemotepathmappingById",
         "parameters": [
           {
             "name": "id",
@@ -6456,6 +6727,7 @@
         "tags": [
           "RenameEpisode"
         ],
+        "operationId": "getRename",
         "parameters": [
           {
             "name": "seriesId",
@@ -6496,6 +6768,7 @@
         "tags": [
           "RenameEpisode"
         ],
+        "operationId": "getRenameBulk",
         "parameters": [
           {
             "name": "seriesIds",
@@ -6531,6 +6804,7 @@
         "tags": [
           "RootFolder"
         ],
+        "operationId": "postRootfolder",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6541,8 +6815,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6567,6 +6841,7 @@
         "tags": [
           "RootFolder"
         ],
+        "operationId": "getRootfolder",
         "responses": {
           "200": {
             "description": "OK",
@@ -6589,6 +6864,7 @@
         "tags": [
           "RootFolder"
         ],
+        "operationId": "deleteRootfolderById",
         "parameters": [
           {
             "name": "id",
@@ -6610,6 +6886,7 @@
         "tags": [
           "RootFolder"
         ],
+        "operationId": "getRootfolderById",
         "parameters": [
           {
             "name": "id",
@@ -6640,6 +6917,7 @@
         "tags": [
           "SeasonPass"
         ],
+        "operationId": "postSeasonpass",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6650,8 +6928,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
         }
       }
@@ -6661,6 +6939,7 @@
         "tags": [
           "Series"
         ],
+        "operationId": "getSeries",
         "parameters": [
           {
             "name": "tvdbId",
@@ -6699,6 +6978,7 @@
         "tags": [
           "Series"
         ],
+        "operationId": "postSeries",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6709,8 +6989,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -6727,6 +7007,7 @@
         "tags": [
           "Series"
         ],
+        "operationId": "getSeriesById",
         "parameters": [
           {
             "name": "id",
@@ -6763,6 +7044,7 @@
         "tags": [
           "Series"
         ],
+        "operationId": "putSeriesById",
         "parameters": [
           {
             "name": "moveFiles",
@@ -6791,8 +7073,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "application/json": {
                 "schema": {
@@ -6807,6 +7089,7 @@
         "tags": [
           "Series"
         ],
+        "operationId": "deleteSeriesById",
         "parameters": [
           {
             "name": "id",
@@ -6846,6 +7129,7 @@
         "tags": [
           "SeriesEditor"
         ],
+        "operationId": "putSeriesEditor",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6866,8 +7150,34 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SeriesResource"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SeriesResource"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SeriesResource"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -6875,6 +7185,7 @@
         "tags": [
           "SeriesEditor"
         ],
+        "operationId": "deleteSeriesEditor",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6906,6 +7217,7 @@
         "tags": [
           "SeriesImport"
         ],
+        "operationId": "postSeriesImport",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6946,6 +7258,7 @@
         "tags": [
           "SeriesLookup"
         ],
+        "operationId": "getSeriesLookup",
         "parameters": [
           {
             "name": "term",
@@ -6988,79 +7301,12 @@
         }
       }
     },
-    "/content/{path}": {
-      "get": {
-        "tags": [
-          "StaticResource"
-        ],
-        "parameters": [
-          {
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^(?!api/).*",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/": {
-      "get": {
-        "tags": [
-          "StaticResource"
-        ],
-        "parameters": [
-          {
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/{path}": {
-      "get": {
-        "tags": [
-          "StaticResource"
-        ],
-        "parameters": [
-          {
-            "name": "path",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^(?!(api|feed|docs)/).*",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/v3/system/status": {
       "get": {
         "tags": [
           "System"
         ],
+        "operationId": "getSystemStatus",
         "responses": {
           "200": {
             "description": "OK",
@@ -7080,6 +7326,7 @@
         "tags": [
           "System"
         ],
+        "operationId": "getSystemRoutes",
         "responses": {
           "200": {
             "description": "OK"
@@ -7092,6 +7339,7 @@
         "tags": [
           "System"
         ],
+        "operationId": "getSystemRoutesDuplicate",
         "responses": {
           "200": {
             "description": "OK"
@@ -7104,6 +7352,7 @@
         "tags": [
           "System"
         ],
+        "operationId": "postSystemShutdown",
         "responses": {
           "200": {
             "description": "OK"
@@ -7116,6 +7365,7 @@
         "tags": [
           "System"
         ],
+        "operationId": "postSystemRestart",
         "responses": {
           "200": {
             "description": "OK"
@@ -7128,6 +7378,7 @@
         "tags": [
           "Tag"
         ],
+        "operationId": "getTag",
         "responses": {
           "200": {
             "description": "OK",
@@ -7148,6 +7399,7 @@
         "tags": [
           "Tag"
         ],
+        "operationId": "postTag",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7158,8 +7410,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -7186,6 +7438,7 @@
         "tags": [
           "Tag"
         ],
+        "operationId": "putTagById",
         "parameters": [
           {
             "name": "id",
@@ -7206,8 +7459,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -7232,6 +7485,7 @@
         "tags": [
           "Tag"
         ],
+        "operationId": "deleteTagById",
         "parameters": [
           {
             "name": "id",
@@ -7253,6 +7507,7 @@
         "tags": [
           "Tag"
         ],
+        "operationId": "getTagById",
         "parameters": [
           {
             "name": "id",
@@ -7283,6 +7538,7 @@
         "tags": [
           "TagDetails"
         ],
+        "operationId": "getTagDetail",
         "responses": {
           "200": {
             "description": "OK",
@@ -7305,6 +7561,7 @@
         "tags": [
           "TagDetails"
         ],
+        "operationId": "getTagDetailById",
         "parameters": [
           {
             "name": "id",
@@ -7335,6 +7592,7 @@
         "tags": [
           "Task"
         ],
+        "operationId": "getSystemTask",
         "responses": {
           "200": {
             "description": "OK",
@@ -7373,6 +7631,7 @@
         "tags": [
           "Task"
         ],
+        "operationId": "getSystemTaskById",
         "parameters": [
           {
             "name": "id",
@@ -7403,6 +7662,7 @@
         "tags": [
           "UiConfig"
         ],
+        "operationId": "putConfigUiById",
         "parameters": [
           {
             "name": "id",
@@ -7423,8 +7683,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "202": {
+            "description": "Accepted",
             "content": {
               "text/plain": {
                 "schema": {
@@ -7449,6 +7709,7 @@
         "tags": [
           "UiConfig"
         ],
+        "operationId": "getConfigUiById",
         "parameters": [
           {
             "name": "id",
@@ -7479,6 +7740,7 @@
         "tags": [
           "UiConfig"
         ],
+        "operationId": "getConfigUi",
         "responses": {
           "200": {
             "description": "OK",
@@ -7498,6 +7760,7 @@
         "tags": [
           "Update"
         ],
+        "operationId": "getUpdate",
         "responses": {
           "200": {
             "description": "OK",
@@ -7520,6 +7783,7 @@
         "tags": [
           "UpdateLogFile"
         ],
+        "operationId": "getLogFileUpdate",
         "responses": {
           "200": {
             "description": "OK",
@@ -7542,6 +7806,7 @@
         "tags": [
           "UpdateLogFile"
         ],
+        "operationId": "getLogFileUpdateByFilename",
         "parameters": [
           {
             "name": "filename",
@@ -8005,8 +8270,7 @@
             "format": "date-time",
             "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CommandResult": {
         "enum": [
@@ -12247,9 +12511,6 @@
     },
     {
       "name": "Authentication"
-    },
-    {
-      "name": "StaticResource"
     },
     {
       "name": "AutoTagging"
