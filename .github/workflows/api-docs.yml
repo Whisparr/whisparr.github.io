@@ -1,0 +1,52 @@
+name: Update API Docs
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: api-docs
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v6
+
+      - name: Download OpenAPI Document
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Newest release, prereleases included, that carries the document
+          TAG=$(gh api "repos/Whisparr/Whisparr/releases?per_page=20" \
+            --jq '[.[] | select(any(.assets[]; .name == "openapi.json"))][0].tag_name // empty')
+
+          if [ -z "$TAG" ]; then
+            echo "No release carries openapi.json yet"
+            exit 0
+          fi
+
+          echo "Using $TAG"
+          gh release download "$TAG" --repo Whisparr/Whisparr --pattern openapi.json --dir "$RUNNER_TEMP" --clobber
+          jq -e '.paths | length > 0' "$RUNNER_TEMP/openapi.json" > /dev/null
+          cp "$RUNNER_TEMP/openapi.json" docs/api/openapi.json
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+
+      - name: Commit Changes
+        run: |
+          if git diff --quiet -- docs/api/openapi.json; then
+            echo "API docs already up to date"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/api/openapi.json
+          git commit -m "Update API docs to ${TAG}"
+          git push
