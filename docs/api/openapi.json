@@ -2,7 +2,7 @@
   "openapi": "3.0.4",
   "info": {
     "title": "Whisparr",
-    "description": "Whisparr API docs - These API docs apply only to Whisparr v2.\n\nGenerated from Whisparr 2.2.0.376 (v2-develop).",
+    "description": "Whisparr API docs - These API docs apply only to Whisparr v2.\n\nGenerated from Whisparr 2.2.0.380 (v2-develop).",
     "license": {
       "name": "GPL-3.0",
       "url": "https://github.com/Whisparr/Whisparr/blob/develop/LICENSE"
