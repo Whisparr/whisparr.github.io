@@ -2,10 +2,10 @@
   "openapi": "3.0.4",
   "info": {
     "title": "Whisparr",
-    "description": "Whisparr API docs - These API docs apply only to Whisparr v2.\n\nGenerated from Whisparr 2.2.0.380 (v2-develop).",
+    "description": "Whisparr API docs - These API docs apply only to Whisparr v2.\n\nGenerated from Whisparr 2.2.0.404 (v2-develop).",
     "license": {
       "name": "GPL-3.0",
-      "url": "https://github.com/Whisparr/Whisparr/blob/develop/LICENSE"
+      "url": "https://github.com/Whisparr/Whisparr/blob/v2-develop/LICENSE"
     },
     "version": "3.0.0"
   },
@@ -35,9 +35,39 @@
         "operationId": "getApi",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiInfoResource"
+                }
+              }
+            }
           }
         }
+      }
+    },
+    "/login/sso": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "getLoginSso",
+        "parameters": [
+          {
+            "name": "returnUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Found"
+          }
+        },
+        "security": [ ]
       }
     },
     "/login": {
@@ -87,8 +117,18 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "302": {
+            "description": "Found"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         },
         "security": [ ]
@@ -101,8 +141,8 @@
         ],
         "operationId": "getLogout",
         "responses": {
-          "200": {
-            "description": "OK"
+          "302": {
+            "description": "Found"
           }
         },
         "security": [ ]
@@ -121,7 +161,8 @@
                 "$ref": "#/components/schemas/AutoTaggingResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -191,7 +232,8 @@
                 "$ref": "#/components/schemas/AutoTaggingResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -276,7 +318,33 @@
         "operationId": "getAutotaggingSchema",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AutoTaggingSpecificationSchema"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AutoTaggingSpecificationSchema"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AutoTaggingSpecificationSchema"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -363,7 +431,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupRestoreResource"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupRestoreResource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupRestoreResource"
+                }
+              }
+            }
           }
         }
       }
@@ -374,9 +459,45 @@
           "Backup"
         ],
         "operationId": "postSystemBackupRestoreUpload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "restore"
+                ],
+                "type": "object",
+                "properties": {
+                  "restore": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupRestoreResource"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupRestoreResource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupRestoreResource"
+                }
+              }
+            }
           }
         }
       }
@@ -503,7 +624,8 @@
                 "$ref": "#/components/schemas/BlocklistBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -684,7 +806,17 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/calendar": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
           }
         }
       }
@@ -702,7 +834,8 @@
                 "$ref": "#/components/schemas/CommandResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -826,7 +959,8 @@
                 "$ref": "#/components/schemas/CustomFilterResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -875,7 +1009,8 @@
                 "$ref": "#/components/schemas/CustomFilterResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -986,7 +1121,8 @@
                 "$ref": "#/components/schemas/CustomFormatResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -1035,7 +1171,8 @@
                 "$ref": "#/components/schemas/CustomFormatResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -1125,7 +1262,8 @@
                 "$ref": "#/components/schemas/CustomFormatBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -1155,7 +1293,8 @@
                 "$ref": "#/components/schemas/CustomFormatBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1172,7 +1311,33 @@
         "operationId": "getCustomformatSchema",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomFormatSpecificationSchema"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomFormatSpecificationSchema"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CustomFormatSpecificationSchema"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1307,7 +1472,8 @@
                 "$ref": "#/components/schemas/DelayProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -1399,7 +1565,8 @@
                 "$ref": "#/components/schemas/DelayProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -1579,7 +1746,8 @@
                 "$ref": "#/components/schemas/DownloadClientResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -1627,7 +1795,8 @@
                 "$ref": "#/components/schemas/DownloadClientResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -1707,7 +1876,8 @@
                 "$ref": "#/components/schemas/DownloadClientBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -1727,7 +1897,8 @@
                 "$ref": "#/components/schemas/DownloadClientBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1782,11 +1953,24 @@
                 "$ref": "#/components/schemas/DownloadClientResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -1799,7 +1983,30 @@
         "operationId": "postDownloadclientTestall",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1827,11 +2034,17 @@
                 "$ref": "#/components/schemas/DownloadClientResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
           }
         }
       }
@@ -1879,7 +2092,8 @@
                 "$ref": "#/components/schemas/DownloadClientConfigResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -2042,7 +2256,8 @@
                 "$ref": "#/components/schemas/EpisodeResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -2120,7 +2335,8 @@
                 "$ref": "#/components/schemas/EpisodesMonitoredResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -2222,7 +2438,8 @@
                 "$ref": "#/components/schemas/EpisodeFileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -2312,7 +2529,8 @@
                 "$ref": "#/components/schemas/EpisodeFileListResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -2361,7 +2579,8 @@
                 "$ref": "#/components/schemas/EpisodeFileListResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2384,7 +2603,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -2452,7 +2672,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileSystemResult"
+                }
+              }
+            }
           }
         }
       }
@@ -2474,7 +2701,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileSystemTypeResource"
+                }
+              }
+            }
           }
         }
       }
@@ -2496,7 +2730,17 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FileSystemMediaFileResource"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -2858,7 +3102,8 @@
                 "$ref": "#/components/schemas/HostConfigResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -2957,7 +3202,8 @@
                 "$ref": "#/components/schemas/ImportListResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -3005,7 +3251,8 @@
                 "$ref": "#/components/schemas/ImportListResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -3085,7 +3332,8 @@
                 "$ref": "#/components/schemas/ImportListBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -3105,7 +3353,8 @@
                 "$ref": "#/components/schemas/ImportListBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3160,11 +3409,24 @@
                 "$ref": "#/components/schemas/ImportListResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -3177,7 +3439,30 @@
         "operationId": "postImportlistTestall",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -3205,11 +3490,17 @@
                 "$ref": "#/components/schemas/ImportListResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
           }
         }
       }
@@ -3249,7 +3540,8 @@
                 "$ref": "#/components/schemas/ImportListExclusionResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -3352,7 +3644,8 @@
                 "$ref": "#/components/schemas/ImportListExclusionResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -3473,7 +3766,8 @@
                 "$ref": "#/components/schemas/IndexerResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -3521,7 +3815,8 @@
                 "$ref": "#/components/schemas/IndexerResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -3601,7 +3896,8 @@
                 "$ref": "#/components/schemas/IndexerBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -3621,7 +3917,8 @@
                 "$ref": "#/components/schemas/IndexerBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3676,11 +3973,24 @@
                 "$ref": "#/components/schemas/IndexerResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -3693,7 +4003,30 @@
         "operationId": "postIndexerTestall",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -3721,11 +4054,17 @@
                 "$ref": "#/components/schemas/IndexerResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
           }
         }
       }
@@ -3773,7 +4112,8 @@
                 "$ref": "#/components/schemas/IndexerConfigResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -3950,7 +4290,8 @@
                 "$ref": "#/components/schemas/LanguageProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -4035,7 +4376,8 @@
                 "$ref": "#/components/schemas/LanguageProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -4276,7 +4618,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -4358,11 +4707,38 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ManualImportReprocessResource"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ManualImportReprocessResource"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ManualImportReprocessResource"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -4395,7 +4771,27 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/gif": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
           }
         }
       }
@@ -4443,7 +4839,8 @@
                 "$ref": "#/components/schemas/MediaManagementConfigResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -4542,7 +4939,8 @@
                 "$ref": "#/components/schemas/MetadataResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -4590,7 +4988,8 @@
                 "$ref": "#/components/schemas/MetadataResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -4703,11 +5102,24 @@
                 "$ref": "#/components/schemas/MetadataResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -4720,7 +5132,30 @@
         "operationId": "postMetadataTestall",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -4748,11 +5183,17 @@
                 "$ref": "#/components/schemas/MetadataResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
           }
         }
       }
@@ -4929,7 +5370,8 @@
                 "$ref": "#/components/schemas/NamingConfigResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -5109,7 +5551,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamingExampleResource"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamingExampleResource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamingExampleResource"
+                }
+              }
+            }
           }
         }
       }
@@ -5158,7 +5617,8 @@
                 "$ref": "#/components/schemas/NotificationResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -5206,7 +5666,8 @@
                 "$ref": "#/components/schemas/NotificationResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -5319,11 +5780,24 @@
                 "$ref": "#/components/schemas/NotificationResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -5336,7 +5810,30 @@
         "operationId": "postNotificationTestall",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProviderTestAllResult"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -5364,11 +5861,17 @@
                 "$ref": "#/components/schemas/NotificationResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
           }
         }
       }
@@ -5405,6 +5908,9 @@
                 }
               }
             }
+          },
+          "204": {
+            "description": "No Content"
           }
         }
       }
@@ -5482,7 +5988,8 @@
                 "$ref": "#/components/schemas/QualityDefinitionResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -5608,7 +6115,8 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -5686,7 +6194,8 @@
                 "$ref": "#/components/schemas/QualityProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -5778,7 +6287,8 @@
                 "$ref": "#/components/schemas/QualityProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -5976,7 +6486,8 @@
                 "$ref": "#/components/schemas/QueueBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -6150,7 +6661,8 @@
                 "$ref": "#/components/schemas/QueueBulkResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -6252,11 +6764,29 @@
                 "$ref": "#/components/schemas/ReleaseResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReleaseResource"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReleaseResource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReleaseResource"
+                }
+              }
+            }
           }
         }
       },
@@ -6331,7 +6861,8 @@
                 "$ref": "#/components/schemas/ReleaseProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -6449,7 +6980,8 @@
                 "$ref": "#/components/schemas/ReleaseProfileResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -6517,7 +7049,8 @@
                 "$ref": "#/components/schemas/ReleaseResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -6565,7 +7098,8 @@
                 "$ref": "#/components/schemas/RemotePathMappingResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -6667,7 +7201,8 @@
                 "$ref": "#/components/schemas/RemotePathMappingResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -6812,7 +7347,8 @@
                 "$ref": "#/components/schemas/RootFolderResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -6925,7 +7461,8 @@
                 "$ref": "#/components/schemas/SeasonPassResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -6986,7 +7523,8 @@
                 "$ref": "#/components/schemas/SeriesResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -7070,7 +7608,8 @@
                 "$ref": "#/components/schemas/SeriesResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -7147,7 +7686,8 @@
                 "$ref": "#/components/schemas/SeriesEditorResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -7203,7 +7743,8 @@
                 "$ref": "#/components/schemas/SeriesEditorResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -7244,11 +7785,38 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SeriesResource"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SeriesResource"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SeriesResource"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -7329,7 +7897,14 @@
         "operationId": "getSystemRoutes",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -7342,7 +7917,20 @@
         "operationId": "getSystemRoutesDuplicate",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -7355,7 +7943,24 @@
         "operationId": "postSystemShutdown",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShutdownResource"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShutdownResource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShutdownResource"
+                }
+              }
+            }
           }
         }
       }
@@ -7368,7 +7973,24 @@
         "operationId": "postSystemRestart",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestartResource"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestartResource"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestartResource"
+                }
+              }
+            }
           }
         }
       }
@@ -7407,7 +8029,8 @@
                 "$ref": "#/components/schemas/TagResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -7456,7 +8079,8 @@
                 "$ref": "#/components/schemas/TagResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -7653,6 +8277,9 @@
                 }
               }
             }
+          },
+          "204": {
+            "description": "No Content"
           }
         }
       }
@@ -7680,7 +8307,8 @@
                 "$ref": "#/components/schemas/UiConfigResource"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "202": {
@@ -7820,7 +8448,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -7885,6 +8520,23 @@
         },
         "additionalProperties": false
       },
+      "ApiInfoResource": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "string",
+            "nullable": true
+          },
+          "deprecated": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ApplyTags": {
         "enum": [
           "add",
@@ -7906,7 +8558,8 @@
           "none",
           "basic",
           "forms",
-          "external"
+          "external",
+          "oidc"
         ],
         "type": "string"
       },
@@ -8003,6 +8656,15 @@
           "time": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BackupRestoreResource": {
+        "type": "object",
+        "properties": {
+          "restartRequired": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -8988,6 +9650,97 @@
         ],
         "type": "string"
       },
+      "FileSystemEntityType": {
+        "enum": [
+          "parent",
+          "drive",
+          "folder",
+          "file"
+        ],
+        "type": "string"
+      },
+      "FileSystemMediaFileResource": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "nullable": true
+          },
+          "relativePath": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileSystemModel": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/FileSystemEntityType"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "path": {
+            "type": "string",
+            "nullable": true
+          },
+          "extension": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastModified": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileSystemResult": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "type": "string",
+            "nullable": true
+          },
+          "directories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileSystemModel"
+            },
+            "nullable": true
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileSystemModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileSystemTypeResource": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Gender": {
         "enum": [
           "female",
@@ -9024,7 +9777,9 @@
             "nullable": true
           },
           "wikiUrl": {
-            "$ref": "#/components/schemas/HttpUri"
+            "type": "string",
+            "format": "uri",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -9182,6 +9937,26 @@
             "type": "string",
             "nullable": true
           },
+          "oidcAuthority": {
+            "type": "string",
+            "nullable": true
+          },
+          "oidcClientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "oidcClientSecret": {
+            "type": "string",
+            "nullable": true
+          },
+          "oidcUserIdentifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "oidcScopes": {
+            "type": "string",
+            "nullable": true
+          },
           "logLevel": {
             "type": "string",
             "nullable": true
@@ -9286,48 +10061,6 @@
           },
           "trustCgnatIpAddresses": {
             "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "HttpUri": {
-        "type": "object",
-        "properties": {
-          "fullUri": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "scheme": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "host": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "port": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "readOnly": true
-          },
-          "path": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "query": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "fragment": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -10444,6 +11177,24 @@
         },
         "additionalProperties": false
       },
+      "NamingExampleResource": {
+        "type": "object",
+        "properties": {
+          "singleEpisodeExample": {
+            "type": "string",
+            "nullable": true
+          },
+          "javEpisodeExample": {
+            "type": "string",
+            "nullable": true
+          },
+          "seriesFolderExample": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "NewItemMonitorTypes": {
         "enum": [
           "all",
@@ -10715,6 +11466,33 @@
         ],
         "type": "string"
       },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
       "ProfileFormatItemResource": {
         "type": "object",
         "properties": {
@@ -10765,6 +11543,27 @@
           "error"
         ],
         "type": "string"
+      },
+      "ProviderTestAllResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isValid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "validationFailures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationFailure"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "ProxyType": {
         "enum": [
@@ -11555,6 +12354,15 @@
         ],
         "type": "string"
       },
+      "RestartResource": {
+        "type": "object",
+        "properties": {
+          "restarting": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Revision": {
         "type": "object",
         "properties": {
@@ -12033,6 +12841,23 @@
         ],
         "type": "string"
       },
+      "Severity": {
+        "enum": [
+          "error",
+          "warning",
+          "info"
+        ],
+        "type": "string"
+      },
+      "ShutdownResource": {
+        "type": "object",
+        "properties": {
+          "shuttingDown": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "SortDirection": {
         "enum": [
           "default",
@@ -12476,6 +13301,46 @@
           },
           "hash": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidationFailure": {
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "attemptedValue": {
+            "nullable": true
+          },
+          "customState": {
+            "nullable": true
+          },
+          "severity": {
+            "$ref": "#/components/schemas/Severity"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "formattedMessageArguments": {
+            "type": "array",
+            "items": { },
+            "nullable": true,
+            "deprecated": true
+          },
+          "formattedMessagePlaceholderValues": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
             "nullable": true
           }
         },
