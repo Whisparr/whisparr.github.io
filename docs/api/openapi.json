@@ -2,7 +2,7 @@
   "openapi": "3.0.4",
   "info": {
     "title": "Whisparr",
-    "description": "Whisparr API docs - These API docs apply only to Whisparr v2.\n\nGenerated from Whisparr 2.2.0.404 (v2-develop).",
+    "description": "Whisparr API docs - These API docs apply only to Whisparr v2.\n\nGenerated from Whisparr 2.2.0.450 (v2-develop).",
     "license": {
       "name": "GPL-3.0",
       "url": "https://github.com/Whisparr/Whisparr/blob/v2-develop/LICENSE"
@@ -9600,9 +9600,7 @@
             "type": "string",
             "nullable": true
           },
-          "value": {
-            "nullable": true
-          },
+          "value": { },
           "type": {
             "type": "string",
             "nullable": true
@@ -12038,12 +12036,8 @@
           "enabled": {
             "type": "boolean"
           },
-          "required": {
-            "nullable": true
-          },
-          "ignored": {
-            "nullable": true
-          },
+          "required": { },
+          "ignored": { },
           "airDateRestriction": {
             "type": "boolean"
           },
@@ -13317,12 +13311,8 @@
             "type": "string",
             "nullable": true
           },
-          "attemptedValue": {
-            "nullable": true
-          },
-          "customState": {
-            "nullable": true
-          },
+          "attemptedValue": { },
+          "customState": { },
           "severity": {
             "$ref": "#/components/schemas/Severity"
           },
@@ -13338,9 +13328,7 @@
           },
           "formattedMessagePlaceholderValues": {
             "type": "object",
-            "additionalProperties": {
-              "nullable": true
-            },
+            "additionalProperties": { },
             "nullable": true
           }
         },
